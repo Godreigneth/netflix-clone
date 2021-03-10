@@ -1,7 +1,6 @@
 import React, { useState, useContext, createContext } from 'react';
 import {
     Container,
-    Frame,
     Title,
     Item,
     Inner,
@@ -32,15 +31,6 @@ Accordion.Title = function AccordionTitle({ children, ...restProops }) {
 };
 
 
-Accordion.Frame = function AccordionFrame({ children, ...restProops }) {
-    return (
-        <Frame {...restProops}>
-            {children}
-        </Frame>
-    );
-};
-
-
 Accordion.Item = function AccordionItem({ children, ...restProops }) {
     const [toggleShow, setToggleShow] = useState(false);
 
@@ -59,6 +49,11 @@ Accordion.Header = function AccordionHeader({ children, ...restProops }) {
             onClick={() => setToggleShow((toggleShow) => !toggleShow)}
             {...restProops}>
             {children}
+            {toggleShow ? (
+                <img src="/images/icons/close-slim.png" alt="Close" />
+            ) : (
+                    <img src="/images/icons/add.png" alt="Open" />
+                )}
         </Header>
     );
 };
